@@ -124,24 +124,24 @@ class App(tk.Tk):
   
   def punto_7(self):
     self.limpiar_cuerpo_principal()
-      
-    tk.Label(self.cuerpo_principal, text="Cual numero es mayor", bg=COLOR_CUERPO_PRINCIPAL, font=("Arial", 20) ).pack(side=tk.TOP)
     
-    etiqueta = tk.Label(self.cuerpo_principal, text="Ingrese el primer numero", bg=COLOR_CUERPO_PRINCIPAL, font=("Arial", 15))
-    etiqueta.pack(side=tk.TOP)
-    etiqueta.grid(row=0, column=0)
+    # Columna 1: Etiqueta y botón
+    etiqueta_columna_1 = tk.Label(self.cuerpo_principal, text="Columna 1")
+    etiqueta_columna_1.grid(row=0, column=1, sticky=tk.W)
+
+    boton_columna_1 = tk.Button(self.cuerpo_principal, text="Botón 1")
+    boton_columna_1.grid(row=1, column=0, sticky=tk.W)
+
+    # Columna 2: Entrada de texto y lista
+    entrada_columna_2 = tk.Entry(self.cuerpo_principal)
+    entrada_columna_2.grid(row=0, column=0, sticky=tk.E)
+
+    lista_columna_2 = tk.Listbox(self.cuerpo_principal)
+    lista_columna_2.grid(row=1, column=1, sticky=tk.E)
     
-    primer_numero = tk.Entry(self.cuerpo_principal, font=("Arial", 15))
-    primer_numero.pack(side=tk.TOP)
-    primer_numero.grid(row=1, column=0)
+    tk.Label(self.cuerpo_principal, text="Primer punto", font=("Roboto", 20)).pack()
     
-    etiqueta_2 = tk.Label(self.cuerpo_principal, text="Ingrese el segundo numero", bg=COLOR_CUERPO_PRINCIPAL, font=("Arial", 15))
-    etiqueta_2.pack(side=tk.TOP)
-    etiqueta_2.grid(row=0, column=1)
-    
-    segundo_numero = tk.Entry(self.cuerpo_principal, font=("Arial", 15))
-    segundo_numero.pack(side=tk.TOP)
-    segundo_numero.grid(row=1, column=1)
+    self.cuerpo_principal.config(bg=COLOR_CUERPO_PRINCIPAL, padx=350)
     
   def punto_10(self):
     self.limpiar_cuerpo_principal()

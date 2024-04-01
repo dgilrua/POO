@@ -10,16 +10,20 @@ class App(tk.Tk):
   def __init__(self):
     super().__init__()
     self.logo_menu = util_img.leer_imagen("actividad_3\img\menu.png", (30,30))
+    self.escudo_un = util_img.leer_imagen("actividad_3\img\escudo_un.png", (400,400))
     self.config_window()
     self.paneles()
     self.controles_barra_superior() 
     self.controles_menu_lateral()
     self.controles_cuerpo()
+    self.informacion_inicial()
+    self.bind_hover_events(self.buttonTitle)
+    self.bind_hover_events(self.buttonMenuLateral)
     
   def config_window(self):
     #Configuracion ventana
     self.title("Actividad 3")
-    w,h= 1024, 600
+    w,h= 1280, 720
     window_config.centrar_ventana(self,w,h)
     
   def paneles(self):
@@ -29,7 +33,7 @@ class App(tk.Tk):
     self.menu_lateral = tk.Frame(self, bg=COLOR_MENU_LATERAL, width=250)
     self.menu_lateral.pack(side=tk.LEFT, fill='both', expand=False) 
     
-    self.cuerpo_principal = tk.Frame(self, bg=COLOR_CUERPO_PRINCIPAL)
+    self.cuerpo_principal = tk.Frame(self, bg=COLOR_CUERPO_PRINCIPAL, pady=30)
     self.cuerpo_principal.pack(side=tk.RIGHT, fill='both', expand=True)
     
   def controles_barra_superior(self):
@@ -37,12 +41,12 @@ class App(tk.Tk):
     font_awesome = font.Font(family='FontAwesome', size=12)
     
     self.buttonMenuLateral = tk.Button(self.barra_superior, image=self.logo_menu ,font=font_awesome, command=self.toggle_panel,
-                                        bd=0, bg=COLOR_BARRA_SUPERIOR, fg="white", padx=10)
+                                        bd=0, bg=COLOR_BARRA_SUPERIOR, fg="white", padx=10, cursor="hand1")
     self.buttonMenuLateral.pack(side=tk.LEFT)
 
-    self.labelTitulo = tk.Label(self.barra_superior, text="Programacion orientada a objetos")
-    self.labelTitulo.config(fg="#fff", font=("Roboto", 15), bg=COLOR_BARRA_SUPERIOR, pady=10, width=30)
-    self.labelTitulo.pack(side=tk.LEFT)
+    self.buttonTitle = tk.Button(self.barra_superior, text="Programacion orientada a objetos", fg="white", cursor="hand1")
+    self.buttonTitle.config(fg="#fff", font=("Roboto", 15), bg=COLOR_BARRA_SUPERIOR, pady=10, width=30, bd=0, command=self.informacion_inicial)
+    self.buttonTitle.pack(side=tk.LEFT)
 
 
     self.labelTitulo = tk.Label(self.barra_superior, text="Universidad nacional de colombia")
@@ -54,8 +58,6 @@ class App(tk.Tk):
     ancho_menu = 20
     alto_menu = 2
     font_awesome = font.Font(family='FontAwesome', size=15)
-
-    # Botones del menú lateral
     
     self.button7 = tk.Button(self.menu_lateral)        
     self.button10 = tk.Button(self.menu_lateral)        
@@ -74,7 +76,15 @@ class App(tk.Tk):
     ]
 
     for text, button, action in buttons_info:
-        self.configurar_boton_menu(button, text,font_awesome, ancho_menu, alto_menu, action)                    
+        self.configurar_boton_menu(button, text,font_awesome, ancho_menu, alto_menu, action)  
+        
+  def informacion_inicial(self):
+    # Información inicial en el cuerpo principal
+    self.limpiar_cuerpo_principal()
+    label = tk.Label(self.cuerpo_principal, image=self.escudo_un, bg=COLOR_CUERPO_PRINCIPAL)
+    label.pack(side=tk.TOP)
+    label = tk.Label(self.cuerpo_principal, text="\nUniversidad Nacional de Colombia\n\nProgramación Orientada a Objetos - Actividad 3\n\n Daniel Esteban Alvarez - David Gil Rua", bg=COLOR_CUERPO_PRINCIPAL, font=("Roboto", 20))
+    label.pack(side=tk.TOP)                  
     
   def controles_cuerpo(self):
       # Imagen en el cuerpo principal
@@ -107,39 +117,54 @@ class App(tk.Tk):
           self.menu_lateral.pack_forget()
       else:
           self.menu_lateral.pack(side=tk.LEFT, fill='y')
-  def punto_7(self):
+          
+  def limpiar_cuerpo_principal(self):
     for widget in self.cuerpo_principal.winfo_children():
-      widget.destroy()
+      widget.destroy()        
+  
+  def punto_7(self):
+    self.limpiar_cuerpo_principal()
       
-    tk.Label(self.cuerpo_principal, text="Primer punto").pack(side=tk.TOP)
+    tk.Label(self.cuerpo_principal, text="Cual numero es mayor", bg=COLOR_CUERPO_PRINCIPAL, font=("Arial", 20) ).pack(side=tk.TOP)
+    
+    etiqueta = tk.Label(self.cuerpo_principal, text="Ingrese el primer numero", bg=COLOR_CUERPO_PRINCIPAL, font=("Arial", 15))
+    etiqueta.pack(side=tk.TOP)
+    etiqueta.grid(row=0, column=0)
+    
+    primer_numero = tk.Entry(self.cuerpo_principal, font=("Arial", 15))
+    primer_numero.pack(side=tk.TOP)
+    primer_numero.grid(row=1, column=0)
+    
+    etiqueta_2 = tk.Label(self.cuerpo_principal, text="Ingrese el segundo numero", bg=COLOR_CUERPO_PRINCIPAL, font=("Arial", 15))
+    etiqueta_2.pack(side=tk.TOP)
+    etiqueta_2.grid(row=0, column=1)
+    
+    segundo_numero = tk.Entry(self.cuerpo_principal, font=("Arial", 15))
+    segundo_numero.pack(side=tk.TOP)
+    segundo_numero.grid(row=1, column=1)
     
   def punto_10(self):
-    for widget in self.cuerpo_principal.winfo_children():
-      widget.destroy()
+    self.limpiar_cuerpo_principal()
       
     tk.Label(self.cuerpo_principal, text="Segundo punto").pack(side=tk.TOP)
     
   def punto_18(self):
-    for widget in self.cuerpo_principal.winfo_children():
-      widget.destroy()
+    self.limpiar_cuerpo_principal()
       
     tk.Label(self.cuerpo_principal, text="Tercer punto").pack(side=tk.TOP)
   
   def punto_19(self):
-    for widget in self.cuerpo_principal.winfo_children():
-      widget.destroy()
+    self.limpiar_cuerpo_principal()
       
     tk.Label(self.cuerpo_principal, text="Cuarto punto").pack(side=tk.TOP)
   
   def punto_22(self):
-    for widget in self.cuerpo_principal.winfo_children():
-      widget.destroy()
+    self.limpiar_cuerpo_principal()
       
     tk.Label(self.cuerpo_principal, text="Quinto punto").pack(side=tk.TOP)
   
   def punto_23(self):
-    for widget in self.cuerpo_principal.winfo_children():
-      widget.destroy()
+    self.limpiar_cuerpo_principal()
       
     tk.Label(self.cuerpo_principal, text="Sexto punto").pack(side=tk.TOP)
     

@@ -10,7 +10,7 @@ class App(tk.Tk):
   def __init__(self):
     super().__init__()
     self.logo_menu = util_img.leer_imagen("actividad_3\img\menu.png", (30,30))
-    self.escudo_un = util_img.leer_imagen("actividad_3\img\escudo_un.png", (400,400))
+    self.escudo_un = util_img.leer_imagen("actividad_3\img\escudo_un.png", (350,400))
     self.config_window()
     self.paneles()
     self.controles_barra_superior() 
@@ -125,47 +125,230 @@ class App(tk.Tk):
   def punto_7(self):
     self.limpiar_cuerpo_principal()
     
-    # Columna 1: Etiqueta y botón
-    etiqueta_columna_1 = tk.Label(self.cuerpo_principal, text="Columna 1")
-    etiqueta_columna_1.grid(row=0, column=1, sticky=tk.W)
-
-    boton_columna_1 = tk.Button(self.cuerpo_principal, text="Botón 1")
-    boton_columna_1.grid(row=1, column=0, sticky=tk.W)
-
-    # Columna 2: Entrada de texto y lista
-    entrada_columna_2 = tk.Entry(self.cuerpo_principal)
-    entrada_columna_2.grid(row=0, column=0, sticky=tk.E)
-
-    lista_columna_2 = tk.Listbox(self.cuerpo_principal)
-    lista_columna_2.grid(row=1, column=1, sticky=tk.E)
+    tk.Label(self.cuerpo_principal, text="Numero mayor entre 2", font=("Roboto", 20), bg=COLOR_CUERPO_PRINCIPAL ).pack()
     
-    tk.Label(self.cuerpo_principal, text="Primer punto", font=("Roboto", 20)).pack()
+    tk.Label(self.cuerpo_principal, text="Ingrese el primer numero", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    self.numero1 = tk.Entry(self.cuerpo_principal ,font=("Roboto", 15))
+    self.numero1.pack()
     
-    self.cuerpo_principal.config(bg=COLOR_CUERPO_PRINCIPAL, padx=350)
+    tk.Label(self.cuerpo_principal, text="Ingrese el segundo numero", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    self.numero2 = tk.Entry(self.cuerpo_principal ,font=("Roboto", 15))
+    self.numero2.pack()
+    
+    tk.Button(self.cuerpo_principal, text="Calcular", command=self.calcular_numero_mayor, font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL).pack()
+    
+    self.resultado = tk.Label(self.cuerpo_principal, text="", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL )
+     
+  def calcular_numero_mayor(self):
+      try:
+        numero1 = int(self.numero1.get())
+        numero2 = int(self.numero2.get())
+        if numero1 > numero2:
+          self.resultado.config(text=f"El numero mayor es {numero1}")
+        elif numero2 > numero1:
+          self.resultado.config(text=f"El numero mayor es {numero2}")
+        else:
+          self.resultado.config(text=f"Los numeros son iguales")
+      except ValueError:
+        self.resultado.config(text="Ingrese un numero valido")
+      self.resultado.pack()  
     
   def punto_10(self):
     self.limpiar_cuerpo_principal()
       
-    tk.Label(self.cuerpo_principal, text="Segundo punto").pack(side=tk.TOP)
+    tk.Label(self.cuerpo_principal, text="Precio de la matricula", font=("Roboto", 20), bg=COLOR_CUERPO_PRINCIPAL ).pack()
     
+    tk.Label(self.cuerpo_principal, text="Ingrese el numero de matricula", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    self.num = tk.Entry(self.cuerpo_principal ,font=("Roboto", 15))
+    self.num.pack()
+    
+    tk.Label(self.cuerpo_principal, text="Ingrese el nombre del estudiante", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    self.nom = tk.Entry(self.cuerpo_principal ,font=("Roboto", 15))
+    self.nom.pack()
+    
+    tk.Label(self.cuerpo_principal, text="Ingrese el patrimonio del estudiante", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    self.pat = tk.Entry(self.cuerpo_principal ,font=("Roboto", 15))
+    self.pat.pack()
+    
+    tk.Label(self.cuerpo_principal, text="Ingrese el estrato del estudiante", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    self.estrato = tk.Entry(self.cuerpo_principal ,font=("Roboto", 15))
+    self.estrato.pack()
+    
+    tk.Button(self.cuerpo_principal, text="Calcular", command=self.precio_matricula, font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL).pack()
+    
+    self.resultado = tk.Label(self.cuerpo_principal, text="", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL )
+    
+  def precio_matricula(self):
+    try: 
+      num = self.num.get()
+      nom = self.nom.get()
+      pat = int(self.pat.get())
+      estrato = int(self.estrato.get())
+      precio_matricula = 50000
+      
+      if pat > 2000000 and estrato > 3:
+        precio_matricula = precio_matricula + 0.03*pat
+      self.resultado.config(text=f"El número de matrícula es: {num}\nEl nombre del estudiante es: {nom}\nEl precio de la matrícula que debe pagar el estudiante es: $ {precio_matricula}")
+    except ValueError:
+      self.resultado.config(text="Los campos no pueden estar vacios")
+    self.resultado.pack()
+
   def punto_18(self):
     self.limpiar_cuerpo_principal()
       
-    tk.Label(self.cuerpo_principal, text="Tercer punto").pack(side=tk.TOP)
+    tk.Label(self.cuerpo_principal, text="Salarios de un empleado", font=("Roboto", 20), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    
+    tk.Label(self.cuerpo_principal, text="Ingrese el código del empleado", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    self.cod = tk.Entry(self.cuerpo_principal ,font=("Roboto", 15))
+    self.cod.pack()
+    
+    tk.Label(self.cuerpo_principal, text="Ingrese el nombre del empleado", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    self.nom = tk.Entry(self.cuerpo_principal ,font=("Roboto", 15))
+    self.nom.pack()
+    
+    tk.Label(self.cuerpo_principal, text="Ingrese la cantidad de horas trabajadas en el mes", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    self.htm = tk.Entry(self.cuerpo_principal ,font=("Roboto", 15))
+    self.htm.pack()
+    
+    tk.Label(self.cuerpo_principal, text="Ingrese el valor de la hora trabajada", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    self.ht = tk.Entry(self.cuerpo_principal ,font=("Roboto", 15))
+    self.ht.pack()
+    
+    tk.Label(self.cuerpo_principal, text="Ingrese la retención en la fuente", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    self.rf = tk.Entry(self.cuerpo_principal ,font=("Roboto", 15))
+    self.rf.pack()
+    
+    tk.Button(self.cuerpo_principal, text="Calcular", command=self.calcular_salario, font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL).pack()
+    
+    self.resultado = tk.Label(self.cuerpo_principal, text="", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL )
+    
+    
+  def calcular_salario(self):
+    try:
+      cod = self.cod.get()
+      nom = self.nom.get()
+      htm = int(self.htm.get())
+      ht = int(self.ht.get())
+      rf = float(self.rf.get())
+      
+      sb = htm * ht
+      sn = sb - (sb * rf)
+      self.resultado.config(text=f"El código del empleado es: {cod}\nEl nombre del empleado es: {nom}\nEl salario bruto es: $ {sb}\nEl salario neto es: $ {sn}")
+    except ValueError:
+      self.resultado.config(text="Los campos no pueden estar vacios")
+    self.resultado.pack()
   
   def punto_19(self):
     self.limpiar_cuerpo_principal()
       
-    tk.Label(self.cuerpo_principal, text="Cuarto punto").pack(side=tk.TOP)
+    tk.Label(self.cuerpo_principal, text="Informacion de un triangulo", font=("Roboto", 20), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    
+    tk.Label(self.cuerpo_principal, text="Ingrese el lado del triangulo", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    self.lado = tk.Entry(self.cuerpo_principal ,font=("Roboto", 15))
+    self.lado.pack()
+    
+    tk.Button(self.cuerpo_principal, text="Calcular", command=self.informacion_triangulo, font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL).pack()
+    
+    self.resultado = tk.Label(self.cuerpo_principal, text="", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL )
+
+    
+  def informacion_triangulo(self):
+    try:
+      lado = float(self.lado.get())
+      altura = (sqrt(3) / 2) * lado
+      perimetro = lado * 3
+      area = (lado * altura) / 2
+      
+      self.resultado.config(text=f"La altura es: {altura} cm\nEl perímetro es: {perimetro} cm\nEl área es: {area} cm^2")
+    except ValueError:
+      self.resultado.config(text="Ingrese un número válido")
+    self.resultado.pack()
   
   def punto_22(self):
     self.limpiar_cuerpo_principal()
       
-    tk.Label(self.cuerpo_principal, text="Quinto punto").pack(side=tk.TOP)
+    tk.Label(self.cuerpo_principal, text="Informacion deacuerdo a salario", font=("Roboto", 20), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    
+    tk.Label(self.cuerpo_principal, text="Ingrese el nombre del empleado", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    self.nombre = tk.Entry(self.cuerpo_principal ,font=("Roboto", 15))
+    self.nombre.pack()
+    
+    tk.Label(self.cuerpo_principal, text="Ingrese el precio por hora", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    self.precio_hora = tk.Entry(self.cuerpo_principal ,font=("Roboto", 15))
+    self.precio_hora.pack()
+    
+    tk.Label(self.cuerpo_principal, text="Ingrese las horas trabajadas", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    self.horas = tk.Entry(self.cuerpo_principal ,font=("Roboto", 15))
+    self.horas.pack()
+    
+    tk.Button(self.cuerpo_principal, text="Calcular", command=self.filtrar_informacion, font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL).pack()
+    
+    self.resultado = tk.Label(self.cuerpo_principal, text="", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL )
+    
+        
+  def filtrar_informacion(self):
+    try:
+      nombre = self.nombre.get()
+      precio_hora = float(self.precio_hora.get())
+      horas = float(self.horas.get())
+      
+      salario = precio_hora * horas
+      
+      if salario >= 4500000:
+        self.resultado.config(text=f"Nombre: {nombre}\nSalario: {salario}")
+        
+      else:
+        self.resultado.config(text=f"Nombre: {nombre}")  
+        
+    except ValueError:
+      self.resultado.config(text="Ingrese un número válido")
+      
+    self.resultado.pack()
   
   def punto_23(self):
     self.limpiar_cuerpo_principal()
       
-    tk.Label(self.cuerpo_principal, text="Sexto punto").pack(side=tk.TOP)
+    tk.Label(self.cuerpo_principal, text="Solucion ecuacion segundo grado", font=("Roboto", 20), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    
+    tk.Label(self.cuerpo_principal, text="Ingrese el valor de a", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    self.a = tk.Entry(self.cuerpo_principal ,font=("Roboto", 15))
+    self.a.pack()
+    
+    tk.Label(self.cuerpo_principal, text="Ingrese el valor de b", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    self.b = tk.Entry(self.cuerpo_principal ,font=("Roboto", 15))
+    self.b.pack()
+    
+    tk.Label(self.cuerpo_principal, text="Ingrese el valor de c", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL ).pack()
+    self.c = tk.Entry(self.cuerpo_principal ,font=("Roboto", 15))
+    self.c.pack()
+    
+    tk.Button(self.cuerpo_principal, text="Calcular", command=self.solucion_ecn_segundo_grado, font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL).pack()
+    
+    self.resultado = tk.Label(self.cuerpo_principal, text="", pady=20 ,font=("Roboto", 15), bg=COLOR_CUERPO_PRINCIPAL )
+    
+  def solucion_ecn_segundo_grado(self):
+    
+    try:
+      a = float(self.a.get())
+      b = float(self.b.get())
+      c = float(self.c.get())
+    
+      discriminante = b**2 - 4*a*c
+      if discriminante > 0:
+        x1 = (-b + sqrt(discriminante)) / (2*a)
+        x2 = (-b - sqrt(discriminante)) / (2*a)
+        self.resultado.config(text=f"Las soluciones son: {x1} y {x2}")
+        
+      elif discriminante == 0:
+        x = -b / (2*a)
+        self.resultado.config(text=f"La solución es: {x}")
+        
+      else:
+        self.resultado.config(text="No tiene solución en los numeros reales")
+        
+    except ValueError:
+      self.resultado.config(text="Ingrese un número válido")
+    
+    self.resultado.pack()
     
   

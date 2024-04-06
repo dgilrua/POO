@@ -9,8 +9,8 @@ import numpy as np
 class App(tk.Tk):
   def __init__(self):
     super().__init__()
-    self.logo_menu = util_img.leer_imagen("actividad_3\img\menu.png", (30,30))
-    self.escudo_un = util_img.leer_imagen("actividad_3\img\escudo_un.png", (350,400))
+    self.logo_menu = util_img.leer_imagen("actividad_3_parte_1\img\menu.png", (30,30))
+    self.escudo_un = util_img.leer_imagen("actividad_3_parte_1\img\escudo_un.png", (350,400))
     self.config_window()
     self.paneles()
     self.controles_barra_superior() 
@@ -22,7 +22,7 @@ class App(tk.Tk):
     
   def config_window(self):
     #Configuracion ventana
-    self.title("Actividad 3")
+    self.title("Actividad 3 parte 1")
     w,h= 1280, 720
     window_config.centrar_ventana(self,w,h)
     

@@ -32,7 +32,7 @@ class VentanaPrincipal(tk.Tk):
         self.create_widgets()
 
     def create_widgets(self):
-        # Labels and Entries
+
         tk.Label(self, text="Nombre:").place(x=20, y=20)
         self.campo_nombre = tk.Entry(self)
         self.campo_nombre.place(x=105, y=20)
@@ -49,12 +49,11 @@ class VentanaPrincipal(tk.Tk):
         self.campo_direccion = tk.Entry(self)
         self.campo_direccion.place(x=105, y=110)
 
-        # Buttons
+  
         tk.Button(self, text="Añadir", command=self.añadir_persona).place(x=105, y=150)
         tk.Button(self, text="Eliminar", command=self.eliminar_persona).place(x=20, y=280)
         tk.Button(self, text="Borrar Lista", command=self.borrar_lista).place(x=120, y=280)
 
-        # Listbox with scrollbar
         self.lista_nombres = Listbox(self, selectmode=tk.SINGLE)
         self.scroll_lista = Scrollbar(self, orient=tk.VERTICAL, command=self.lista_nombres.yview)
         self.lista_nombres.config(yscrollcommand=self.scroll_lista.set)

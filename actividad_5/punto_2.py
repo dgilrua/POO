@@ -75,29 +75,29 @@ class VentanaCilindro(tk.Tk):
         super().__init__()
         self.inicio()
         self.title("Cilindro")
-        self.geometry("280x210")
+        self.geometry("380x210")  # Aumentado el tamaño de la ventana
         self.resizable(False, False)
         self.eval("tk::PlaceWindow . center")
 
     def inicio(self):
         self.radio = tk.Label(self, text="Radio (cms):")
-        self.radio.place(x=20, y=20, width=135, height=23)
+        self.radio.place(x=20, y=20, width=160, height=23)  # Aumentado el ancho
         self.campo_radio = tk.Entry(self)
-        self.campo_radio.place(x=100, y=20, width=135, height=23)
+        self.campo_radio.place(x=190, y=20, width=160, height=23)  # Aumentado el ancho
 
         self.altura = tk.Label(self, text="Altura (cms):")
-        self.altura.place(x=20, y=50, width=135, height=23)
+        self.altura.place(x=20, y=50, width=160, height=23)  # Aumentado el ancho
         self.campo_altura = tk.Entry(self)
-        self.campo_altura.place(x=100, y=50, width=135, height=23)
+        self.campo_altura.place(x=190, y=50, width=160, height=23)  # Aumentado el ancho
 
         self.calcular = tk.Button(self, text="Calcular", command=self.calcular_cilindro)
-        self.calcular.place(x=100, y=80, width=135, height=23)
+        self.calcular.place(x=190, y=80, width=160, height=23)  # Aumentado el ancho
 
         self.volumen = tk.Label(self, text="Volumen (cm3):")
-        self.volumen.place(x=20, y=110, width=135, height=23)
+        self.volumen.place(x=20, y=110, width=160, height=23)  # Aumentado el ancho
 
         self.superficie = tk.Label(self, text="Superficie (cm2):")
-        self.superficie.place(x=20, y=140, width=135, height=23)
+        self.superficie.place(x=20, y=140, width=160, height=23)  # Aumentado el ancho
 
     def calcular_cilindro(self):
         try:
@@ -119,25 +119,25 @@ class VentanaEsfera(tk.Tk):
         super().__init__()
         self.inicio()
         self.title("Esfera")
-        self.geometry("280x200")
+        self.geometry("380x200")  # Aumentado el tamaño de la ventana
         self.resizable(False, False)
         self.eval("tk::PlaceWindow . center")
 
     def inicio(self):
         self.radio = tk.Label(self, text="Radio (cms):")
-        self.radio.place(x=20, y=20, width=135, height=23)
+        self.radio.place(x=20, y=20, width=160, height=23)  # Aumentado el ancho
 
         self.campo_radio = tk.Entry(self)
-        self.campo_radio.place(x=100, y=20, width=135, height=23)
+        self.campo_radio.place(x=190, y=20, width=160, height=23)  # Aumentado el ancho
 
         self.calcular = tk.Button(self, text="Calcular", command=self.calcular_esfera)
-        self.calcular.place(x=100, y=50, width=135, height=23)
+        self.calcular.place(x=190, y=50, width=160, height=23)  # Aumentado el ancho
 
         self.volumen = tk.Label(self, text="Volumen (cm3):")
-        self.volumen.place(x=20, y=90, width=135, height=23)
+        self.volumen.place(x=20, y=90, width=160, height=23)  # Aumentado el ancho
 
         self.superficie = tk.Label(self, text="Superficie (cm2):")
-        self.superficie.place(x=20, y=120, width=135, height=23)
+        self.superficie.place(x=20, y=120, width=160, height=23)  # Aumentado el ancho
 
     def calcular_esfera(self):
         try:
@@ -156,34 +156,34 @@ class VentanaPiramide(tk.Tk):
         super().__init__()
         self.inicio()
         self.title("Pirámide")
-        self.geometry("280x240")
+        self.geometry("380x240")  # Aumentado el tamaño de la ventana
         self.resizable(False, False)
         self.eval("tk::PlaceWindow . center")
 
     def inicio(self):
         self.base = tk.Label(self, text="Base (cms):")
-        self.base.place(x=20, y=20, width=135, height=23)
+        self.base.place(x=20, y=20, width=160, height=23)  # Aumentado el ancho
         self.campo_base = tk.Entry(self)
-        self.campo_base.place(x=120, y=20, width=135, height=23)
+        self.campo_base.place(x=190, y=20, width=160, height=23)  # Aumentado el ancho
 
         self.altura = tk.Label(self, text="Altura (cms):")
-        self.altura.place(x=20, y=50, width=135, height=23)
+        self.altura.place(x=20, y=50, width=160, height=23)  # Aumentado el ancho
         self.campo_altura = tk.Entry(self)
-        self.campo_altura.place(x=120, y=50, width=135, height=23)
+        self.campo_altura.place(x=190, y=50, width=160, height=23)  # Aumentado el ancho
 
         self.apotema = tk.Label(self, text="Apotema (cms):")
-        self.apotema.place(x=20, y=80, width=135, height=23)
+        self.apotema.place(x=20, y=80, width=160, height=23)  # Aumentado el ancho
         self.campo_apotema = tk.Entry(self)
-        self.campo_apotema.place(x=120, y=80, width=135, height=23)
+        self.campo_apotema.place(x=190, y=80, width=160, height=23)  # Aumentado el ancho
 
         self.calcular = tk.Button(self, text="Calcular", command=self.calcular_piramide)
-        self.calcular.place(x=120, y=110, width=135, height=23)
+        self.calcular.place(x=190, y=110, width=160, height=23)  # Aumentado el ancho
 
         self.volumen = tk.Label(self, text="Volumen (cm3):")
-        self.volumen.place(x=20, y=140, width=135, height=23)
+        self.volumen.place(x=20, y=140, width=160, height=23)  # Aumentado el ancho
 
         self.superficie = tk.Label(self, text="Superficie (cm2):")
-        self.superficie.place(x=20, y=170, width=135, height=23)
+        self.superficie.place(x=20, y=170, width=160, height=23)  # Aumentado el ancho
 
     def calcular_piramide(self):
         try:
@@ -208,19 +208,19 @@ class VentanaPrincipal(tk.Tk):
         super().__init__()
         self.inicio()
         self.title("Figuras")
-        self.geometry("350x160")
+        self.geometry("400x160")  # Aumentado el tamaño de la ventana
         self.resizable(False, False)
         self.eval("tk::PlaceWindow . center")
 
     def inicio(self):
         self.cilindro = tk.Button(self, text="Cilindro", command=self.abrir_cilindro)
-        self.cilindro.place(x=20, y=50, width=80, height=23)
+        self.cilindro.place(x=20, y=50, width=120, height=23)  # Aumentado el ancho
 
         self.esfera = tk.Button(self, text="Esfera", command=self.abrir_esfera)
-        self.esfera.place(x=125, y=50, width=80, height=23)
+        self.esfera.place(x=150, y=50, width=120, height=23)  # Aumentado el ancho
 
         self.piramide = tk.Button(self, text="Pirámide", command=self.abrir_piramide)
-        self.piramide.place(x=225, y=50, width=100, height=23)
+        self.piramide.place(x=280, y=50, width=120, height=23)  # Aumentado el ancho
 
     def abrir_esfera(self):
         esfera = VentanaEsfera()

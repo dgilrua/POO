@@ -3,15 +3,16 @@ import tkinter as tk
 from tkinter import messagebox
 
 
+import math
+import tkinter as tk
+from tkinter import messagebox
+
 class Notas:
     def __init__(self):
-
         self.listaNotas = [0.0] * 5
 
     def calcular_promedio(self):
-        suma = 0
-        for i in range(1, len(self.listaNotas)):
-            suma += self.listaNotas[i]
+        suma = sum(self.listaNotas)
         return suma / len(self.listaNotas)
 
     def calcular_desviacion(self):
@@ -41,19 +42,31 @@ class Notas:
         self.listaNotas = [0.0] * 5
 
     def calcular_promedio(self):
-        suma = sum(self.listaNotas[1:])
+        suma = 0
+        for i in range(len(self.listaNotas)):
+            suma += self.listaNotas[i]
         return suma / len(self.listaNotas)
 
     def calcular_desviacion(self):
         prom = self.calcular_promedio()
-        suma = sum((nota - prom) ** 2 for nota in self.listaNotas)
+        suma = 0
+        for i in range(len(self.listaNotas)):
+            suma += (self.listaNotas[i] - prom) ** 2
         return math.sqrt(suma / len(self.listaNotas))
 
     def calcular_menor(self):
-        return min(self.listaNotas)
+        menor = self.listaNotas[0]
+        for i in range(len(self.listaNotas)):
+            if self.listaNotas[i] < menor:
+                menor = self.listaNotas[i]
+        return menor
 
     def calcular_mayor(self):
-        return max(self.listaNotas)
+        mayor = self.listaNotas[0]
+        for i in range(len(self.listaNotas)):
+            if self.listaNotas[i] > mayor:
+                mayor = self.listaNotas[i]
+        return mayor
 
 
 class VentanaPrincipal(tk.Tk):
